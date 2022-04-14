@@ -1,0 +1,14 @@
+<h1>注文履歴一覧<h1>
+
+<%= @order_details.each do |order_detail| %>
+
+  <p>購入日時</p>
+    <span><%= order_detail.order.created_at %></span>
+  <p>購入者</p>
+    <span><%= order_detail.order.name %></span>
+  <p>注文個数</p>
+    <span><%= order_detail.quantity %></span>
+  <p>注文ステータス</p>
+    <span><%= order_detail.order.status %></span>
+
+<% end %>

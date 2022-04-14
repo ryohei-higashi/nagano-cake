@@ -1,0 +1,16 @@
+<%= link_to "商品新規登録", new_admin_item_path %>
+
+<h1>商品一覧</h1>
+
+<%= @items.each do |item| %>
+
+  <p>商品ID</p>
+    <span><%= item.id %></span>
+  <p>商品名</p>
+    <span><%= item.name %></span>
+  <p>税抜価格</p>
+    <span><%= item.price %></span>
+  <p>ジャンル</p>
+    <span><%= item.is_active %></span>
+
+<% end %>
