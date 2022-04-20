@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class AddDeviseToCustomers < ActiveRecord::Migration[6.1]
-  def change
-    create_table :customers do |t|
+class AddDeviseToAdmins < ActiveRecord::Migration[6.1]
+  def self.up
+    change_table :admins do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -35,20 +35,12 @@ class AddDeviseToCustomers < ActiveRecord::Migration[6.1]
 
       # Uncomment below if timestamps were not included in your original model.
       # t.timestamps null: false
-      t.string :last_name, null: false
-      t.string :first_name, null: false
-      t.string :last_name_kana, null: false
-      t.string :first_name_kana, null: false
-      t.string :postal_code, null: false
-      t.string :address, null: false
-      t.string :telephone_number, null: false
-      t.boolean :is_active, null: false, default: true
     end
 
-    add_index :customers, :email,                unique: true
-    add_index :customers, :reset_password_token, unique: true
-    # add_index :customers, :confirmation_token,   unique: true
-    # add_index :customers, :unlock_token,         unique: true
+    add_index :admins, :email,                unique: true
+    add_index :admins, :reset_password_token, unique: true
+    # add_index :admins, :confirmation_token,   unique: true
+    # add_index :admins, :unlock_token,         unique: true
   end
 
   def self.down
