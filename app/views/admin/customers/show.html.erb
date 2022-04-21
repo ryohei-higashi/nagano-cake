@@ -21,5 +21,5 @@
 <p>会員ステータス</p>
  <%= @customer.is_active, [['有効', true], ['無効', false]] %>
 
-<p><%= link_to "編集する", edit_admin_customer_path %></p>
+<p><%= link_to "編集する", edit_admin_customer_path(customer.id) %></p>
 <p><%= link_to "注文履歴一覧を見る", admin_path %></p>

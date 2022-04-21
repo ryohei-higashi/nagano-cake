@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:index, :show, :edit, :update]
 
+    resource :orders, only: [:edit, :update]
+    
+    resource :order_details, only: [:update]
+
   end
 
   scope module: :public do
