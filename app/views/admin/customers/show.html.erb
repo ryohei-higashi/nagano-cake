@@ -19,7 +19,11 @@
 <p>メールアドレス</p>
  <%= @customer.email %>
 <p>会員ステータス</p>
- <%= @customer.is_active, [['有効', true], ['無効', false]] %>
+ <% if @customer.is_active == true %>
+  有効
+ <% else %>
+  無効
+ <% end %>
 
-<p><%= link_to "編集する", edit_admin_customer_path(customer.id) %></p>
+<p><%= link_to "編集する", edit_admin_customer_path(@customer.id) %></p>
 <p><%= link_to "注文履歴一覧を見る", admin_path %></p>

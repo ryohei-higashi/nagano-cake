@@ -1,13 +1,13 @@
 <h1>商品詳細</h1>
 
-<%= image_tag @item.get_image %>
+<%= image_tag @item.image %>
 
 <p>商品名</p>
 　<%= @item.name %>
 <p>商品名</p>
 　<%= @item.introduction %>
 <p>ジャンル</p>
-　<%= @item.genre %>
+　<%= @item.genre.name %>
 <p>税込価格（税抜価格）</p>
 　<%= @item.price %>
 <p>販売ステータス</p>

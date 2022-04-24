@@ -2,7 +2,7 @@
 
 <h1>商品一覧</h1>
 
-<%= @items.each do |item| %>
+<% @items.each do |item| %>
 
   <p>商品ID</p>
     <span><%= item.id %></span>
@@ -11,6 +11,14 @@
   <p>税抜価格</p>
     <span><%= item.price %></span>
   <p>ジャンル</p>
-    <span><%= item.is_active %></span>
+    <span><%= item.genre.name %></span>
+  <p>ステータス</p>
+    <span>
+      <% if item.is_active == true %>
+       有効
+      <% else %>
+       無効
+      <% end %>
+    </span>
 
 <% end %>
