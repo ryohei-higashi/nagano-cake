@@ -11,6 +11,10 @@ class Customer < ApplicationRecord
   def full_name
     self.last_name + " " + self.first_name
   end
+  
+  def address_display
+   '〒' + postal_code + ' ' + address + ' ' + last_name + ' ' + first_name
+  end
 
   validates :is_active, inclusion: {in: [true, false]}
 

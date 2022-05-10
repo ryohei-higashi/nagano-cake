@@ -1,0 +1,20 @@
+注文履歴一覧
+
+<% @orders.each do |order| %>
+
+注文日
+ <%= order.create %>
+配送先
+ <%= order.postal_code %>
+ <%= order.address %>
+ <%= order.name %>
+注文商品
+ <%= order.order_detail.item.name %>
+支払金額
+ <%= order.total_payment %>
+ステータス
+ <%= order.status %>
+注文詳細
+ <%= link_to "表示する", order_path %>
+
+<% end %>

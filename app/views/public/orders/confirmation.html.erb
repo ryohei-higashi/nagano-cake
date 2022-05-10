@@ -1,0 +1,31 @@
+<% @cart_items.each do |cart_item| %>
+商品名
+ <%= image_tag cart_item.item.image, size: "100x100" %>
+ <%= cart_item.item.name %>
+単価（税込）
+ <%= cart_item.item.with_tax_price %>
+数量
+ <%= cart_item.amount %>
+小計
+ <%= cart_item.subtotal %>
+商品合計
+ <% @total += cart_item.subtotal %>
+ <%= @total %>
+<% end %>
+送料
+ <%= @order.shipping_cost %>
+請求金額
+ <%= @total_price = @order.shipping_cost + @total %>
+支払方法
+ <%= @order.payment_method_i18n %>
+お届け先
+ <%= @order.address_display_order %>
+
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+ <%= f.hidden_field :name %>
+ <%= f.hidden_field :address %>
+ <%= f.hidden_field :post_code %>
+ <%= f.hidden_field :total_payment, value: @total_price %>
+<%= f.hidden_field :shipping_cost, value: @order.shipping_cost %>
+ <%= f.submit "注文を確定する" %>
+<% end %>

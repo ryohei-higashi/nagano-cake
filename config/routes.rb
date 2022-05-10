@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
 
     resource :orders, only: [:edit, :update]
-    
+
     resource :order_details, only: [:update]
 
   end
@@ -32,21 +32,19 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about', as:'about'
 
-    get 'index' => 'cart_items#index'
-    patch 'update' => 'cart_items#update'
-    patch 'destroy' => 'cart_items#destroy'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     delete 'destroy_all' => 'cart_items#destroy_all'
-    post 'create' => 'cart_items#create'
 
-    get 'new' => 'orders#new'
+    resources :orders, only: [:new, :create, :index, :show]
     post 'confirmation' => 'orders#confirmation'
     get 'thanks' => 'orders#thanks'
-    post 'create' => 'orders#create'
-    get 'index' => 'orders#index'
-    get 'show' => 'orders#show'
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-
+   
+    resource :customers, only: [:show, :edit, :update]
+    get 'confirmation' => 'customers#confirmation'
+    patch 'withdrawal' => 'customers#withdrawal'
+    
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
