@@ -18,5 +18,6 @@ Customer.create!(
   first_name_kana: 'テスト',
   postal_code: '123456',
   address: '日本東京',
-  telephone_number: '123456'
+  telephone_number: '123456',
+  is_active: 'true',
 )

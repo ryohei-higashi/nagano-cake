@@ -4,10 +4,6 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: "public/sessions"
-  }
 
   namespace :admin do
 
@@ -40,12 +36,19 @@ Rails.application.routes.draw do
     get 'thanks' => 'orders#thanks'
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-   
+
     resource :customers, only: [:show, :edit, :update]
     get 'confirmation' => 'customers#confirmation'
+    # get 'confirmation', to: 'customers#confirmation', as: confirmation
     patch 'withdrawal' => 'customers#withdrawal'
-    
+
   end
+
+    devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: "public/sessions"
+  }
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
