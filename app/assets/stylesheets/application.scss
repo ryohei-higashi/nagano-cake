@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+.background_image{
+background-image: image-url('cake.png');
+background-repeat: no-repeat;
+background-position:center center;
+width: 100%;
+height: 350px;
+// text-align: center;
+}
+.home-text{
+  color: #FFFFFF;
+  padding-top: 100px;
+  text-align: center;
+}
+
+.radio_button{
+  display: block;
+  padding-left: 30px;
+}
+
+.radio_button2{
+  margin-left: 10px;
+}
+
+.thanks{
+  margin-top: 50px;
+  text-align: center;
+}

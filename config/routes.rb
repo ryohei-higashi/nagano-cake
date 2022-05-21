@@ -4,6 +4,11 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: "public/sessions"
+  }
+
 
   namespace :admin do
 
@@ -15,9 +20,9 @@ Rails.application.routes.draw do
 
     resources :customers, only: [:index, :show, :edit, :update]
 
-    resource :orders, only: [:edit, :update]
+    resources :orders, only: [:edit, :update]
 
-    resource :order_details, only: [:update]
+    resources :order_details, only: [:update]
 
   end
 
@@ -32,22 +37,17 @@ Rails.application.routes.draw do
     delete 'destroy_all' => 'cart_items#destroy_all'
 
     resources :orders, only: [:new, :create, :index, :show]
-    post 'confirmation' => 'orders#confirmation'
+    post 'confirmation' => 'orders#confirmation', as: "order_confirmation"
     get 'thanks' => 'orders#thanks'
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-    resource :customers, only: [:show, :edit, :update]
-    get 'confirmation' => 'customers#confirmation'
-    # get 'confirmation', to: 'customers#confirmation', as: confirmation
+    resources :customers, only: [:show, :edit, :update]
+    get 'costomer/confirmation', to: 'customers#confirmation', as: "withdrawal_confirmation"
     patch 'withdrawal' => 'customers#withdrawal'
 
   end
 
-    devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: "public/sessions"
-  }
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

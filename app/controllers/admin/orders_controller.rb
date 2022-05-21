@@ -2,7 +2,9 @@ class Admin::OrdersController < ApplicationController
 before_action :authenticate_admin!
  def edit
   @order = Order.find(params[:id])
-  @order_details = @order.order_dateilid
+  @order_details = @order.order_details.all
+  @subtotal = 0
+  @total = 0
  end
 
  def update
@@ -13,7 +15,7 @@ before_action :authenticate_admin!
 
  private
   def order_params
-    param.require(:oder).permit(:status)
+    params.require(:order).permit(:status)
   end
 
 end

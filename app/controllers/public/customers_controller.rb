@@ -20,7 +20,8 @@ before_action :authenticate_customer!
   end
 
   def withdrawal
-    @customer = customer.find(params[:id])
+    # @customer = Customer.find(params[:id])←を入れるとCouldn't find customer without an IDとエラーが出てしまう
+    @customer = current_customer
     @customer.update(is_active: false)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"

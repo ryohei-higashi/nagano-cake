@@ -1,28 +1,38 @@
-<%= link_to "商品新規登録", new_admin_item_path %>
+<div class="container">
 
-<h1>商品一覧</h1>
+ <div class="row mt-3">
+  <strong>商品一覧</strong>
+  <%= link_to "商品新規登録", new_admin_item_path, class:"btn btn-primary ml-5" %>
+ </div>
+ <table class="table">
+    <tr>
+     <th class="table-secondary">商品ID</th>
+     <th class="table-secondary">商品名</th>
+     <th class="table-secondary">税抜価格</th>
+     <th class="table-secondary">ジャンル</th>
+     <th class="table-secondary">ステータス</th>
+    </tr>
+  <% @items.each do |item| %>
 
-<% @items.each do |item| %>
-
-  <p>商品ID</p>
-    <span><%= item.id %></span>
-  <p>商品名</p>
-    <span>
+   <tbody>
+    <tr>
+     <td><%= item.id %></td>
+     <td>
       <%= link_to admin_item_path(item.id) do %>
-      <%= item.name %>
+       <%= item.name %>
       <% end %>
-    </span>
-  <p>税抜価格</p>
-    <span><%= item.price %></span>
-  <p>ジャンル</p>
-    <span><%= item.genre.name %></span>
-  <p>ステータス</p>
-    <span>
-      <% if item.is_active == true %>
-       有効
-      <% else %>
-       無効
-      <% end %>
-    </span>
-
-<% end %>
+     </td>
+     <td><%= item.price %></td>
+     <td><%= item.genre.name %></td>
+     <td>
+        <% if item.is_active == true %>
+         有効
+        <% else %>
+         無効
+        <% end %>
+     </td>
+   </tbody>
+  <% end %>
+ </table>
+ <%= paginate @items %>
+</div>

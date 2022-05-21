@@ -1,23 +1,35 @@
-<h1>会員一覧</h1>
-<% @customers.each do |customer| %>
+<div class="container">
 
-  <p>会員ID</p>
-    <span><%= customer.id %></span>
-  <p>氏名</p>
-    <span>
+  <h4>会員一覧</h4>
+
+  <table class="table mt-2">
+    <tr>
+     <th class="table-secondary">会員ID</th>
+     <th class="table-secondary">氏名</th>
+     <th class="table-secondary">メールアドレス</th>
+     <th class="table-secondary">ステータス</th>
+    </tr>
+  <% @customers.each do |customer| %>
+  <tbody>
+    <tr>
+     <td><%= customer.id %></td>
+     <td>
       <%= link_to admin_customer_path(customer.id) do %>
-      <%= customer.full_name %>
+       <%= customer.full_name %>
       <% end %>
-    </span>
-  <p>メールアドレス</p>
-    <span><%= customer.email %></span>
-  <p>ステータス</p>
-    <span>
-      <% if customer.is_active == true %>
-       有効
-      <% else %>
-       無効
-      <% end %>
-    </span>
+     </td>
+     <td><%= customer.email %></td>
+     <td>
+        <% if customer.is_active == true %>
+         有効
+        <% else %>
+         無効
+        <% end %>
+     </td>
+    </tr>
+  </tbody>
 
-<% end %>
+  <% end %>
+  </table>
+ <%= paginate @customers %>
+</div>

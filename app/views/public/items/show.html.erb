@@ -1,14 +1,22 @@
-<%= image_tag @item.image %>
+<div class="row d-flex justify-content-center mt-5">
 
-<%= @item.name %>
+  <div class="col-3">
+   <%= image_tag @item.image, size: "200x200" %>
+  </div>
 
-<%= @item.introduction %>
+  <div clas="col-9">
+   <strong><%= @item.name %></strong></br>
 
-<%= @item.price %>(税込)
+   <%= @item.introduction %></br>
 
-<%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
- <%= f.hidden_field :item_id, :value => @item.id %>
- <%= f.select :amount, ['1','2','3','4','5'], {include_blank: '選択ボックス'} %>
- <%= f.submit 'カートに入れる' %>
-<% end %>
+   <strong>￥<%= @item.price %></strong>(税込)</br>
+
+   <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.select :amount, ['1','2','3','4','5'], {include_blank: '選択ボックス'} %>
+    <%= f.submit 'カートに入れる' %>
+   <% end %>
+  </div>
+
+</div>
 
