@@ -67,7 +67,6 @@
    <td><%= order_detail.quantity %></td>
    <td><%= @subtotal = order_detail.price * order_detail.quantity %></td>
   </tr>
-  <% @total += @subtotal %>
   <% end %>
   </tbody>
   </table>

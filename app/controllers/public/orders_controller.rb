@@ -12,6 +12,9 @@ class Public::OrdersController < ApplicationController
    @order = current_customer.orders.find(params[:id])
    @order_details = @order.order_details.all
    @total = 0
+   @order_details.each do |order_detail|
+    @total += order_detail.price * order_detail.quantity
+   end
    @subtotal = 0
   end
 
@@ -24,7 +27,7 @@ class Public::OrdersController < ApplicationController
     order_detail.item_id = cart_item.item_id
     order_detail.order_id = @order.id
     order_detail.quantity = cart_item.amount
-    order_detail.price = cart_item.item.price
+    order_detail.price = cart_item.item.with_tax_price
     order_detail.save
    end
    cart_items.destroy_all

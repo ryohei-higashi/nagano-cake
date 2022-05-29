@@ -1,42 +1,44 @@
-<h4>マイページ</h4>
+<div class="container">
+  <h4>マイページ</h4>
 
-登録情報
-
-
- <%= link_to "編集する", edit_customer_path(current_customer), class: 'btn btn-success ml-3', type: 'button' %>
+  登録情報
 
 
-<table class="table table-bordered">
+   <%= link_to "編集する", edit_customer_path(current_customer), class: 'btn btn-success ml-5', type: 'button' %>
 
-  <tr>
-   <th class="table-secondary">氏名</th>
-   <td><%= @customer.last_name + @customer.first_name %></td>
-  </tr>
-  <tr>
-    <th class="table-secondary">カナ</th>
-    <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>
-  </tr>
-  <tr>
-    <th class="table-secondary">郵便番号</th>
-    <td><%= @customer.postal_code %></td>
-  </tr>
-  <tr>
-    <th class="table-secondary">住所</th>
-    <td><%= @customer.address %></td>
-  </tr>
-  <tr>
-    <th class="table-secondary">電話番号</th>
-    <td><%= @customer.telephone_number %></td>
-  </tr>
-  <tr>
-    <th class="table-secondary">メールアドレス</th>
-    <td><%= @customer.email %></td>
-  </tr>
 
-</table>
+  <table class="table table-bordered col-8 mt-3">
 
-配送先
-  <%= link_to "一覧を見る", addresses_path, class: 'btn btn-primary ml-4 mb-2', type: 'button' %></br>
+    <tr>
+     <th class="table-secondary col-3">氏名</th>
+     <td><%= @customer.last_name + @customer.first_name %></td>
+    </tr>
+    <tr>
+      <th class="table-secondary">カナ</th>
+      <td><%= @customer.last_name_kana + @customer.first_name_kana %></td>
+    </tr>
+    <tr>
+      <th class="table-secondary">郵便番号</th>
+      <td><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+      <th class="table-secondary">住所</th>
+      <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <th class="table-secondary">電話番号</th>
+      <td><%= @customer.telephone_number %></td>
+    </tr>
+    <tr>
+      <th class="table-secondary">メールアドレス</th>
+      <td><%= @customer.email %></td>
+    </tr>
 
-注文履歴
-  <%= link_to "一覧を見る", orders_path, class: 'btn btn-primary ml-3', type: 'button' %></br>
+  </table>
+
+  配送先
+    <%= link_to "一覧を見る", addresses_path, class: 'btn btn-primary ml-5 mb-2', type: 'button' %></br>
+
+  注文履歴
+    <%= link_to "一覧を見る", orders_path, class: 'btn btn-primary ml-4', type: 'button' %></br>
+</div>

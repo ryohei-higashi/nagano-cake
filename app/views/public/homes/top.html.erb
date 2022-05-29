@@ -18,11 +18,13 @@
    <div class="col-3">
 
       <div>
-       <%= image_tag item.image, size: "100x100" %>
+       <%= link_to item_path(item.id) do %>
+        <%= image_tag item.image, size: "100x100" %>
+       <% end %>
       </div>
      <%= item.name %></br>
 
-     ￥<%= item.price %></br>
+     ￥<%= item.with_tax_price %></br>
    </div>
 
   <% end %>

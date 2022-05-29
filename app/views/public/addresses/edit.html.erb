@@ -1,10 +1,12 @@
-配送先編集
+<div class="container">
+  配送先編集
 
-<%= form_with model: @address, url: address_path, method: :patch do |f| %>
+  <%= form_with model: @address, url: address_path, method: :patch do |f| %>
 
-郵便番号(ハイフンなし)<%= f.text_field :postal_code, class: "ml-1" %></br>
-住所<%= f.text_field :address, class: "ml-5" %></br>
-宛名<%= f.text_field :name, class: "ml-5" %></br>
-<%= f.submit '変更内容を保存', class: "btn btn-success mt-1 ml-5" %>
+  郵便番号(ハイフンなし)<%= f.text_field :postal_code, class: "ml-1 mt-3" %></br>
+  住所<%= f.text_field :address, class: "ml-5" %></br>
+  宛名<%= f.text_field :name, class: "ml-5" %></br>
+  <%= f.submit '変更内容を保存', class: "btn btn-success mt-3 ml-5" %>
 
-<% end %>
+  <% end %>
+</div>

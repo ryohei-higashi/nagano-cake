@@ -1,36 +1,38 @@
-配送先登録/一覧
+<div class="container">
 
-<%= form_with model: @address, url: addresses_path, mehtod: :post do |f| %>
+ 配送先登録/一覧
 
-郵便番号(ハイフンなし)<%= f.text_field :postal_code, class: 'ml-1' %></br>
-住所<%= f.text_field :address, class: 'ml-5' %></br>
-宛名<%= f.text_field :name, class: 'ml-5' %></br>
-<%= f.submit "新規登録", class: "btn btn-success ml-5" %>
+ <%= form_with model: @address, url: addresses_path, mehtod: :post do |f| %>
 
-<% end %>
+ 郵便番号(ハイフンなし)<%= f.text_field :postal_code, class: 'ml-1 mt-3' %></br>
+ 住所<%= f.text_field :address, class: 'ml-5' %></br>
+ 宛名<%= f.text_field :name, class: 'ml-5' %></br>
+ <%= f.submit "新規登録", class: "btn btn-success ml-5 mt-3" %>
 
-<table class= "table table-bordered">
+ <% end %>
 
-<tr>
- <th class="table-secondary">郵便番号</th>
- <th class="table-secondary">住所</th>
- <th class="table-secondary">宛名</th>
- <th class="table-secondary"></th>
-</tr>
+ <table class= "table table-bordered col-6 mt-4">
 
-<% @addresses.each do |address| %>
+ <tr>
+  <th class="table-secondary">郵便番号</th>
+  <th class="table-secondary">住所</th>
+  <th class="table-secondary">宛名</th>
+  <th class="table-secondary"></th>
+ </tr>
 
+ <% @addresses.each do |address| %>
 
-<tbody>
-<tr>
- <td><%= address.postal_code %></td>
- <td><%= address.address %></td>
- <td><%= address.name %></td>
- <td>
-   <%= link_to "編集する", edit_address_path(address.id), class: 'btn btn-success', type: 'button' %>
-   <%= link_to "削除する", address_path(address.id), method: :delete, class: 'btn btn-danger', type: 'button' %>
- </td>
-</tr>
-</tbody>
-<% end %>
-</table>
+ <tbody>
+ <tr>
+  <td><%= address.postal_code %></td>
+  <td><%= address.address %></td>
+  <td><%= address.name %></td>
+  <td>
+    <%= link_to "編集する", edit_address_path(address.id), class: 'btn btn-success', type: 'button' %>
+    <%= link_to "削除する", address_path(address.id), method: :delete, class: 'btn btn-danger', type: 'button' %>
+  </td>
+ </tr>
+ </tbody>
+ <% end %>
+ </table>
+</div>
